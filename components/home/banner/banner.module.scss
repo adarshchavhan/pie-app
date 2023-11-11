@@ -1,0 +1,311 @@
+@import '/styles/variables.scss';
+@import '/styles/mixin.scss';
+
+.container{
+    width: 100%;
+    height: 580px;
+    background: linear-gradient( $royalBlue, $darkBlue);
+    position: relative;
+
+    .imgContainer{
+        width: 100%;
+        height: inherit;
+        max-height: 580px;
+        position: relative;
+        .bannerImg{
+            object-fit: cover;
+            position: absolute;
+        }
+    }
+
+    .contentContainer{
+        width: 100%;
+        height: inherit;
+        position: absolute;
+        top: 0;
+
+        .content{
+            @include container;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            .leftContainer{
+                height: 100%;
+                padding: 50px 0px 20px 0px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .box{
+                    width: 568px;
+                    background: #00000080;
+                    backdrop-filter: blur(2px);
+                    padding: 3rem .75rem;
+                    border-left: 5px solid $orange;
+                    border-radius: 3px;
+                    
+                    .whiteText{
+                        color: $white;
+                        padding: 10px 0px 0px 16px;
+                        font-family: $acmeFont;
+                        font-size: 28px;
+                        font-weight: 400;
+                    }
+
+                    .orangeText{
+                        color: $orange;
+                        padding: 0px 18px;
+                        margin: 0px 0px 16px;
+                        font-family: $acmeFont;
+                        font-size: 21px;
+                        font-weight: 400;
+                    }
+
+                    .serviceCards{
+                        padding: 0 15px;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 20px;
+                        .serviceCard{
+                            list-style: none;
+                            width: 100%;
+                            height: 72px;
+                            background: $white;
+                            border-radius: 3px;
+                            overflow: hidden;
+                            display: flex;
+                            .serviceIcon{
+                                background: rgb(221, 225, 230);
+                                width: 72px;
+                                height: 72px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                i::before{
+                                    font-size: 28px;
+                                    color: $orange;
+                                }
+                            }
+                            
+                            .serviceText{
+                                padding: 12px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+
+                                > h4{
+                                    color: $orange;
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                }
+                                
+                                > p{
+                                    color: $gray2;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .clientHeading{
+                    color: $white;
+                    font-weight: 500;
+                    font-size: 18px;
+                }
+                
+                .clients{
+                    margin-top: 10px;
+                    display: flex;
+                    gap: 20px;
+                    .clientImg{
+                        width: auto;
+                        height: 48px;
+                        background: $white;
+                        padding: 10px;
+                        border-radius: 3px;
+                        border: 2px solid $lightGray;
+                        transition:all .2s linear;
+                        cursor: pointer;
+                        &:hover{
+                            scale: 1.1;
+                        }
+                    }
+                }
+            }
+
+            .rightContainer{
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    @include lg{
+        
+        .contentContainer{
+            .content{
+                justify-content: space-between;
+                gap: 20px;
+                .leftContainer{
+                    .box{
+                        min-width: 390px;
+                        max-width: 422px;
+                    }
+                    
+                    .clients{
+                        flex-wrap: wrap;
+                        .clientImg{
+                            height: 44px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include md{
+       
+        .bannerImg{
+            position: relative !important;
+        }
+
+        .contentContainer{
+            padding-top: 20px !important;
+            gap: 0px !important;
+            position: static;
+            .leftContainer{
+                padding: 20px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .box{
+                    width: 100% !important;
+                    max-width: 100% !important;
+                }
+                .clientHeading{
+                    width: 100%;
+                    text-align: left !important;
+                }
+                .clients{
+                    width: 100% !important;
+                }
+            }
+            .formContainer{
+                width: 100% !important;
+            }
+        }
+    }
+
+    @include xs{
+        .contentContainer{
+            margin-top: -50px !important;
+            .leftContainer{
+                .box{
+                    width: 100%;
+                    min-width: 100% !important;
+                    .whiteText{
+                        font-size: 24px !important;
+                    }
+
+                    .orangeText{
+                        font-size: 18px !important;
+                    }
+                    .serviceCards{
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .clientHeading{
+        color: var(--color-black);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        height: fit-content;
+        position: static;
+        flex-direction: column;
+        overflow: hidden;
+        .bannerImgContainer{
+            width: 100%;
+            height: fit-content;
+            position: relative;
+            &::after{
+                content: '';
+                filter: blur(10px);
+                width: calc(100% + 30px) !important;
+                height: 40px;
+                position: absolute;
+                background: $royalBlue;
+                left: -15px;
+                bottom: -20px;
+            }
+
+        }
+
+        .contentContainer{
+            height: fit-content;
+            position: static;
+            padding: 0px 15px;
+            gap: 10px;
+            margin-top: -100px;
+            padding-bottom: 30px;
+            
+            .content{
+                padding: 0px;
+                display: flex;
+                flex-direction: column-reverse;
+                .leftContainer{
+                    padding: 0 !important;
+                    .box{
+                        width: 100%;
+                        border-left: none;
+                        border-top: 5px solid $orange;
+                        backdrop-filter: blur(5px);
+                        background: rgba(0,0,0,.4);
+                    }
+        
+                    .clientContainer {
+                        padding: 20px 10px !important;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    
+                        .clients {
+                            padding: 10px 0;
+                            flex-wrap: wrap;
+                            display: flex;
+                            flex-wrap: wrap;
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 15px;
+                    
+                            .clientImg {
+                                width: 100%;
+                                height: 45px;
+                                object-fit: contain;
+                            }
+                        }
+                    
+                    }
+                    
+                }
+            }
+        }
+        
+    }
+    
+    .box .serviceCards{
+        grid-template-columns: 1fr;
+    }
+}

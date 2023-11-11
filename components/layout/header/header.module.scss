@@ -1,0 +1,409 @@
+@import '/styles/mixin.scss';
+@import '/styles/variables.scss';
+
+@mixin item {
+    color: $white;
+    padding: 3px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-right: 1px solid $white;
+
+    &:hover {
+        color: $black;
+    }
+}
+
+@mixin headerContainer{
+    width: 100%;
+    max-width: 1250px;
+    height: inherit;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.container {
+    height: fit-content;
+
+    .topBar {
+        @include headerContainer;
+        height: 85px;
+        padding: 0 10px;
+        display: flex;
+
+        @include md{
+            padding: 0;
+        }
+
+        .left {
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            .logoImg {
+                @include lg{
+                    width: auto;
+                    height: 50px;
+                }
+            }
+        }
+
+        .right {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            .menu {
+                padding: 5px;
+                background: $orange;
+                width: fit-content;
+                display: flex;
+                align-items: center;
+                border-radius: 3px 3px 3px 40px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, .4);            
+
+                a,
+                button {
+                    @include item;
+                    white-space: nowrap;
+                    >i::before {
+                        color: #F5F5F5;
+                        font-size: 14px;
+                        font-weight: normal;
+                    }
+                }
+
+                >span {
+                    display: flex;
+                    align-items: center;
+
+                    >li {
+                        list-style: none;
+                        position: relative;
+
+                        >nav {
+                            width: calc(100% + 10px);
+                            padding-top: 5px;
+                            background: $orange;
+                            color: $white;
+                            display: none;
+                            flex-direction: column;
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            z-index: 1;
+                            border-radius: 0 0 5px 5px;
+
+                            >a {
+                                padding: 7px 10px;
+                                display: flex;
+                                text-align: center;
+                                white-space: nowrap;
+                            }
+                        }
+
+                        &:last-child>a {
+                            border: none;
+                        }
+
+                        &:hover,
+                        &:focus-within,
+                        :focus {
+                            >nav {
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+    }
+
+    .bottomBar {
+        background: $skyBlue;
+
+        .bottomBarContainer {
+            @include headerContainer;
+            max-width: fit-content;
+            display: flex;
+            overflow-x: auto;
+
+            .bottomBarLink {
+                color: $white;
+                min-height: 45px;
+                display: inline-block;
+                border-right: 1px solid $white;
+
+                >.link {
+                    height: 100%;
+                    text-transform: capitalize;
+                    // line-height: 1;
+                    font-size: 13.5px;
+                    display: flex;
+                    align-items: center;
+
+                    >span {
+                        padding: 8px 18px 8px;
+                        white-space: nowrap;
+                        font-size: inherit;
+                        font-weight: 600;
+                        display: flex;
+                    }
+
+                    >i::before {
+                        font-size: 23px;
+                        font-weight: bold;
+                        padding: 0 10px;
+                    }
+                }
+
+                &:first-child{
+                    padding: 10px;
+                    background: $skyBlue;
+                    position: sticky;
+                    left: -15px;
+                    top: 0;
+                }
+
+                &:hover {
+                    background: $orange;
+                }
+            }
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
+        }
+    }
+
+    @include xl{
+        .topBar .right .menu{
+            .menuLink{
+                font-size: 11.5px;
+            }
+            >span >li >nav >a{
+                font-size: 12px;
+            }
+        }
+        .bottomBar .bottomBarContainer .bottomBarLink > .link{
+                font-size: 11.5px;
+        }
+    }
+
+    @include md{
+        background: $white !important;
+        height: fit-content !important;
+        .topBar{
+            flex-direction: column;
+            height: fit-content;
+
+            .left{
+                padding: 10px;
+                padding-bottom: 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .sideButton{
+                    background: $dark;
+                    width: 50px;
+                    height: 50px;
+                    padding: 12px;
+                    border-radius: 5px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: fixed;
+                    top: 10px;
+                    right: 15px;
+                    z-index: 99;
+                    box-shadow: 0 0 3px $lightGray;
+                    > span{
+                        width: 100%;
+                        height: 3.2px;
+                        background: $white;
+                        display: block;
+                        flex-shrink: 0;
+                        flex-grow: 0;
+                        border-radius: 3px;
+                        transition: all 0s linear;
+                    }
+                    &.closeBtn{
+                        > span{
+                            position: relative;
+                            &:nth-child(1){
+                                rotate: 45deg;
+                                top: 11px;
+                            }
+                            &:nth-child(2){
+                                display: none;
+                            }
+                            &:nth-child(3){
+                                rotate: -45deg;
+                                top: -11px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right{
+                padding: 2px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1;
+                .menu{
+                    width: 100%;
+                    border-radius: 0 !important;
+                    justify-content: center;
+                    box-shadow: 0 3px 3px rgba(0, 0, 0, .4);
+                    > span{
+                        display: flex;
+                    }
+                    .menuLink{
+                        font-size: 12.5px;
+                    }
+                }
+            }
+        }
+        .bottomBar{
+            position: fixed;
+            top: 0;
+            left: -100%;
+            z-index: 99;
+            width: 75%;
+            max-width: 100%;
+            min-width: 300px;
+            height: 100vh;
+            background: $dark;
+            transition: all .4s ease-in-out;
+
+            &.open{
+                left: 0%;
+                overflow: auto;
+            }
+            .bottomBarContainer{
+                padding: 0;
+                padding-top: 10px;
+                width: 100%;
+                max-width: 100%;
+                flex-direction: column;
+                .bottomBarLink{
+                    border-right: none;
+                    &:first-child{
+                        background: transparent;
+                    }
+                    > .link{
+                        padding: 10px;
+                        font-size: 13px;
+                        br{
+                            display: none;
+                        }
+                    }
+
+                    &:hover{
+                        background: $gray;
+                    }
+                }
+            }
+        }
+
+        
+    }
+
+    @include sm{
+        padding: 0;
+        .topBar{
+                padding: 0 !important;
+                width: 100%;
+                .right .menu{
+                    width: 100%;
+                    justify-content: space-between;
+                    span {
+                        li{
+                            display: none;
+                            &:last-child{
+                                display: flex;
+                            }
+                        }
+                        .menuLink{
+                            &:last-child{
+                                display: flex;
+                            }
+                        }
+                    }
+                    
+                }
+        }
+    }
+}
+
+.search {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+
+    >input {
+        padding: 10px;
+        color: $gray2;
+        font-size: 14px;
+        border: 1px solid $lightGray;
+        border-radius: 3px;
+    }
+
+    >button {
+        margin-top: 5px;
+        padding: 5px 10px;
+        background: $orange;
+        border-radius: 3px;
+
+        i::before {
+            padding: 0px 2px;
+            font-size: 14px;
+        }
+    }
+
+    &.bottom{
+        display: none;
+    }
+    
+    @include md {
+        &.top{
+            display: none;
+        }
+        &.bottom{
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #dadada;
+            color: #333333;
+            width: calc(100% - 40px);
+            margin: auto;
+            padding: 0;
+            border-radius: 30px;
+            padding: 2px;
+            height: 45px;
+            > input{
+                height: 100%;
+                border: none;
+                width: 100%;
+                font-size: 15px;
+                &::placeholder{
+                    color: $lightGray;
+                }
+            }
+            > button{
+                height: 100%;
+                margin: 0;
+                aspect-ratio: 1/1 !important;
+                border-radius: 50%;
+            }
+        }
+    }
+}

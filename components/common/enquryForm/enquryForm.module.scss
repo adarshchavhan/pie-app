@@ -1,0 +1,336 @@
+@import '/styles/variables.scss';
+@import '/styles/mixin.scss';
+
+.formContainer{
+    width: 319px;
+    height: fit-content;
+    background: rgba(0,0,0,.5);
+    color: $white;
+    text-align: center;
+    border: 1px solid $lightGray;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 0 7px $lightGray;
+    .formHeading{
+        padding: 11px 0;
+        font-size: 22px;
+        letter-spacing: .5;
+        font-weight: 400;
+        span{
+            font-size: 23px;
+            font-weight: 700;
+        }
+    }    
+    
+    .formBrief{
+        font-size: 14px;
+        padding-bottom: 5px;
+    }
+    .form{
+        width: 100%;
+        height: fit-content;
+        background: $white;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 13px;
+        .input{
+            padding: 10px 12px;
+            width: 100%;
+            border: 1px solid $orange;
+            border-radius: 3px;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    
+        .span{
+            display: flex;
+            background: $lightGray;
+            border: 1px solid $orange;
+            border-radius: 3px;
+    
+            button{
+                padding: 10px 12px;
+            }
+            .input{
+                border: none;
+                border-radius: 0;
+                outline: none;
+                background: $white;
+            }
+    
+            &:focus-within{
+                border-color: $black;
+            }
+            
+        }
+    
+    
+        .filesDiv {
+            > input[type='file']{
+                display: none;
+            }
+            .labelWrapper{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 11px;
+                color: $gray;
+    
+               label{
+                        padding: 5px 12px !important;
+                        display: block;
+                        width: fit-content;
+                        background: hsl(210, 100%, 97%);
+                        border-radius: 3px;
+                        color: $darkBlue;
+                        font-size: 13px;
+                        border: 1px dashed $darkBlue !important;
+                        display: flex;
+                        align-items: center;
+                        gap: 7px;
+                        cursor: pointer;
+                        &::before{
+                            content: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16.64" height="16" viewBox="0 0 1664 1600"%3E%3Cpath fill="%23337ab7" d="M1280 1408q0-26-19-45t-45-19t-45 19t-19 45t19 45t45 19t45-19t19-45zm256 0q0-26-19-45t-45-19t-45 19t-19 45t19 45t45 19t45-19t19-45zm128-224v320q0 40-28 68t-68 28H96q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h427q21 56 70.5 92t110.5 36h256q61 0 110.5-36t70.5-92h427q40 0 68 28t28 68zm-325-648q-17 40-59 40h-256v448q0 26-19 45t-45 19H704q-26 0-45-19t-19-45V576H384q-42 0-59-40q-17-39 14-69L787 19q18-19 45-19t45 19l448 448q31 30 14 69z"%2F%3E%3C%2Fsvg%3E');
+                        }
+            
+                        &:hover{
+                            background: $royalBlue;
+                            color: $white;
+                            &::before{
+                                content: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" width="16.64" height="16" viewBox="0 0 1664 1600"%3E%3Cpath fill="white" d="M1280 1408q0-26-19-45t-45-19t-45 19t-19 45t19 45t45 19t45-19t19-45zm256 0q0-26-19-45t-45-19t-45 19t-19 45t19 45t45 19t45-19t19-45zm128-224v320q0 40-28 68t-68 28H96q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h427q21 56 70.5 92t110.5 36h256q61 0 110.5-36t70.5-92h427q40 0 68 28t28 68zm-325-648q-17 40-59 40h-256v448q0 26-19 45t-45 19H704q-26 0-45-19t-19-45V576H384q-42 0-59-40q-17-39 14-69L787 19q18-19 45-19t45 19l448 448q31 30 14 69z"%2F%3E%3C%2Fsvg%3E');
+                            }
+                        }
+                    }
+            }
+    
+            .files{
+                margin: 10px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                .file{
+                    display: grid;
+                    grid-template-columns: 30px 1fr 30px;
+                    gap: 10px;
+    
+                    .text{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+    
+                        > div{
+                            color: $dark;
+                            display: flex;
+                            justify-content: space-between;
+                            gap: 10px;
+    
+                            > p{
+                                font-size: 12px;
+                            }
+                            > b{
+                                font-size: 9px;
+                            }
+                        }
+    
+                        .bar{
+                            width: 100%;
+                            text-align: center;
+                            border: .5px solid #4CAF50;
+                            border-radius: 1px;
+                            padding: 0 5px;
+                            font-size: 8px;
+                            color:$white;
+                            position: relative;
+                            >p{
+                                z-index: 1;
+                                position: relative;
+                            }
+                            &::before{
+                                color: $white;
+                                content: '';
+                                width: 0%;
+                                height: 100%;
+                                background: #4CAF50;
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                animation-name: barAnime;
+                                animation-duration: .15s;
+                                animation-timing-function: linear;
+                                animation-iteration-count: 1;
+                                animation-delay: 0;
+                                animation-fill-mode: forwards;
+                                z-index: 0;
+                                @keyframes barAnime {
+                                    from{
+                                        width: 0%;
+                                    }
+                                    to{
+                                        width: 100%;
+                                    }
+                                }
+                            }
+    
+                        }
+                    }
+    
+                    .btns{
+                        > button{
+                            font-size: 20px;
+                            color: red;
+                            &:hover{
+                                background: none;
+                                color: $dark;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+    
+        .textarea{
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid $orange;
+            border-radius: 3px;
+            resize: none;
+        }
+        
+        .button{
+            padding: 7px 10px;
+            color: $orange;
+            font-size: 20px;
+            font-weight: 500;
+            border: 1px solid $orange;
+            border-radius: 3px;
+            &:hover{
+                color: $white;
+                background: $orange;
+            }
+        }
+    
+        .error{
+            color: red;
+            font-weight: 500;
+            font-size: 12.5px;
+            margin-top: -5px;
+            word-break: break-all;
+            padding: 2px;
+            border-radius: 2px;
+        }
+    
+        .text{
+            color: $black;
+            font-size: 11px;
+            text-align: left;
+            a{
+                color: $orange;
+                font-weight: 500;
+            }
+        }
+    }
+
+
+    &.formContainer1{
+        width: 319px;
+        height: fit-content;
+        background: $orange;
+        color: $white;
+        text-align: center;
+        border: 1px solid $lightGray;
+        border-radius: 7px;
+        box-shadow: 0 0 5px rgba(0,0,0,.1), 5px 15px 10px rgba(0,0,0,.1);
+        padding: 5px;
+        padding-top: 5px;
+
+        @include md{
+            width: 100%;
+        }
+        .formHeading{
+            padding: 11px 0;
+            font-size: 22px;
+            letter-spacing: .5;
+            font-weight: 400;
+            span{
+                font-size: 23px;
+                font-weight: 700;
+            }
+        }    
+        
+        .formBrief{
+            font-size: 14px;
+            padding-bottom: 5px;
+        }
+        
+
+        > form{
+            padding-bottom: 20px;
+            border-radius: 7px;
+            *{
+                border-color: #E7E7E7;
+                border-width: 1px;
+                &:hover{
+                    border-color: $dark;
+                }
+            }
+            a{
+                color: $orange;
+            }
+
+            .filesDiv {
+                .labelWrapper{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 11px;
+                    color: $gray;
+                    
+                    @include md{
+                        br{
+                            display: none;
+                        }
+                    }
+
+                    @include xs{
+                        br{
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            button{
+                color: $orange;
+                &:hover{
+                    color: $white;
+                    border-color: $orange;
+                    background: $orange;
+                }
+                &:disabled{
+                    color: $dark;
+                }
+            }
+        }
+    }
+
+    @include md{
+        width: 100%;
+        > form{
+            margin: auto;
+            padding: 15px 30px !important;
+        }
+    }
+
+    @include xs{
+        > form{
+            padding: 15px !important;
+        }
+    }
+}
+
+

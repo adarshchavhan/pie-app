@@ -1,0 +1,234 @@
+@import '/styles/variables.scss';
+@import '/styles/mixin.scss';
+
+.page-content {
+    width: 100%;
+    font-size: 14px;
+    line-height: 25px;
+    padding-top: 15px;
+    color: $gray;
+
+    @include sm{
+        font-size: 13.5px;
+    }
+
+    .mycolor {
+        color: $orange;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        padding-bottom: 10px;
+        text-transform: uppercase;
+        color: $skyBlue;
+        font-size: 22px;
+        font-weight: 400;
+        font-family: $acmeFont;
+        @include sm{
+            font-size: 18px;
+        }
+    }
+
+    p{
+        margin: 0 0 10px;
+    }
+
+    // menu-list-icon-cards
+    .menu-list-icon-cards{
+        width: 100%;
+        padding: 10px 0;
+        ul{
+            width: 100%;
+            padding: 0 15px;
+            margin-bottom: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            li{
+                list-style: none;
+                > a {
+                    color: $gray1;
+                    width: 100%;
+                    font-size: 14px;
+                    font-weight: 500;
+                    letter-spacing: .3;
+                    line-height: 20px;
+                    display: flex;
+                    align-items: center;
+                    box-shadow: 1px 2px 2px #ddd;
+                    -webkit-transition: all ease .3s;
+                    -moz-transition: all ease .3s;
+                    transition: all ease .3s;
+            
+                    i{
+                        color: $white;
+                        background: $tomato;
+                        display: inline-block;
+                        text-align: center;
+                        width: 50px;
+                        padding: 10px;
+                        font-size: 20px;
+                        margin-right: 10px;
+                        line-height: 1.3;
+                        -webkit-transition: all ease .3s;
+                        -moz-transition: all ease .3s;
+                        transition: all ease .3s;
+                        flex-grow: 0;
+                        height: fit-content;
+                    }
+            
+                    &:hover{
+                        color: $white;
+                        background: $darkTomato;
+                        i{
+                            padding-left: 20px;
+                            padding-right: 0;
+                            background: $darkTomato;
+                        }
+                    }
+            
+                    @include sm{
+                        font-size: 13.5px;
+                    }
+                }
+            }
+
+            @include xl{
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @include lg{
+                grid-template-columns: 1fr;
+            }
+
+            @include md{
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @include xs{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    // .business-benefits-cards
+    .business-benefits-cards{
+        max-width: 768px;
+        margin: 20px auto;
+        padding: 0 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px;
+
+        // .business-benefits-card
+    .business-benefits-card{
+        padding: 10px;
+        margin: 0 10px;
+        box-shadow: 0px 1px 8px 0px #bdbdbd;
+        display: grid;
+        grid-template-columns: 2fr 10fr;
+        -webkit-transition: all ease .3s;
+        -moz-transition: all ease .3s;
+        transition: all ease .3s;
+
+        .icon{
+            margin-top: 10px;
+            text-align: center;
+            i{
+                margin-top: 20px;
+                &::before{
+                    font-size: 40px;
+                    color: #2fb1c0;
+                    margin-left: -10px;
+                }
+            }
+        }
+
+        .cnt{
+            padding-right: 10px;
+            .head{
+                font-size: 15px;
+                font-weight: 500;
+                color: #ff4700;
+                font-family:$firaCodeFont;
+                text-transform: uppercase;
+                border-top: 2px solid #ff4700;
+                border-bottom: 2px solid #ff4700;
+                margin-top: 7px;
+            }
+
+            .txt{
+                margin: 0 0 10px;
+            }
+        }
+
+        &:hover{
+            box-shadow: 0px 1px 8px rgba(0,0,0,.5);
+        }
+    }
+
+        @include lg{
+            grid-template-columns: 1fr;
+        }
+    }
+
+    
+
+    .row{
+        margin-bottom: 15px;
+        display: flex;
+        gap: 15px;
+        > p{
+            flex: 1;
+        }
+
+        .loyalty-dv-1 {
+            flex: 1;
+            border-left: 5px solid #3f3f3f;
+            color: #3f4954;
+            padding-left: 5px;
+            text-align: left;
+            height: fit-content;
+    
+            > div{
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                color: #fff;
+                font-size: 18px;
+                padding-left: 9px;
+                height: 50px;
+                line-height: 50px;
+                margin-bottom: 1px;
+                cursor: pointer;
+                display: block;
+
+                @include xl{
+                    span{
+                        display: none;
+                    }
+                }
+            }
+    
+            .time1 {
+                width: 40%;
+                background: #ff6600;
+            }
+            .time2 {
+                width: 60%;
+                background: #d65600;
+            }
+            .time3 {
+                width: 80%;
+                background: #ad4601;
+            }
+            .time4 {
+                width: 100%;
+                background: #562300;
+            }
+        }
+
+        @include sm{
+            flex-direction: column;
+            
+        }
+    }
+}

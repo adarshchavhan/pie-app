@@ -1,0 +1,50 @@
+@import './variables.scss';
+
+:root{
+    font-family: $robotoFont;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: inherit
+}
+
+.div{
+    color: red !important;
+}
+
+input,
+textarea{
+    background: none;
+    border: none;
+    outline: none;
+    font: inherit;
+}
+
+button{
+    background: none;
+    border: none;
+    outline: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+i{
+    color: inherit;
+    font-size: inherit;
+    &::before{
+        color: inherit;
+        font-size: inherit;
+        font-weight: normal;
+    }
+}
+
+.page{
+    min-height: 100vh;
+}

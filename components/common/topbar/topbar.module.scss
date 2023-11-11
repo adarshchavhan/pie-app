@@ -1,0 +1,266 @@
+@import '/styles/variables.scss';
+@import '/styles/mixin.scss';
+
+@mixin item{
+    white-space: nowrap;
+    text-align: left;
+    font-size: 12px;
+    padding: 15px 12px;
+    color: $gray1;
+    font-weight: 500;
+    border-radius: 3px 3px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > span{
+        color: $skyBlue;
+        margin-left: 7px;
+        font-size: 10px;
+    }
+
+    &:hover{
+        color: $skyBlue;
+    }
+
+    &.active{
+        color: $white;
+        background: $skyBlue;
+        &:hover{
+            background: $white;
+            color: $skyBlue;
+        }
+    }
+}
+
+.banner{
+    height: fit-content;
+    padding: 0 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    background: $white;
+    border: 2px solid $skyBlue;
+    border-radius: 5px;
+    color: $gray;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,.07);
+    overflow: hidden;
+    
+    .textContainer{
+        padding: 10px;
+        .title{
+            color: $skyBlue;
+            font-size: 21px;
+            text-transform: uppercase;
+            font-family: $acmeFont;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-bottom: 15px;
+        }
+
+        .brief{
+            font-size: 16px;
+            line-height: 20px;
+            margin-bottom: 10px;
+            opacity: .99;
+        }
+
+        .div{
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 15px;
+
+            .listItems{
+                font-size: 15px;
+                line-height: 16px;
+                padding: 5px 0 0 0;
+                > li{
+                    list-style: none;
+                    white-space: nowrap;
+                    padding-bottom: 13px;
+                    &::before{
+                        content: '›';
+                        color: $skyBlue;
+                        font-size: 22px;
+                        font-weight: 900;
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+            .link{
+                padding: 8px 10px;
+                margin-left: 0px;
+                margin-bottom: 5px;
+                text-transform: uppercase;
+                font-size: 14px;
+                font-weight: bold;
+                border-radius: 4px;
+                border: 2px solid $skyBlue;
+                color: $skyBlue;
+                white-space: nowrap;
+                &:hover{
+                    color: $white;
+                    background: $skyBlue;
+                }
+            }
+        }
+    }
+
+    .imgContainer{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        > img{
+            width: 530px;
+            height: 168px;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+    }
+
+
+    @include xl{
+        width: calc(100% - 30px);
+        margin: auto;
+        margin-bottom: 15px;
+        .textContainer .brief{
+            font-size: 15px;
+        }
+    }
+
+    @include lg{
+        height: fit-content;
+        .textContainer .brief{
+            display: none;
+        }
+
+        .imgContainer > img{
+            width: 315px;
+            height: calc(100% - 20px);
+        }
+    }
+
+    @include md{
+        .imgContainer{
+            display: none;
+        }
+    }
+
+    @include sm{
+        .textContainer .link{
+            display: none;
+        }
+    }
+}
+
+.menu{
+    width: 100%;
+    height: fit-content;
+    background: $white;
+    position: relative;
+
+    &::after{
+        content: '';
+        width: 100%;
+        height: 4px;
+        background: $skyBlue;
+        position: absolute;
+        bottom: 0px;
+        z-index: 0;
+    }
+    
+    &.fixed{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        &::before{
+            content: '';
+            width: 100%;
+            height: 100%;
+            background: linear-gradient($white, #43b8c52a);
+            position: absolute;
+        }
+        .div{
+            width: 100%;
+            background: transparent;
+            .menuItems{
+                flex-wrap: nowrap;
+            }
+            
+        }
+
+        @include md{
+            padding-right: 60px !important;
+        }
+    }
+    
+    .div{
+        @include container;
+        background: linear-gradient($white, #43b8c52a);
+        padding: 0;
+        .menuItems{
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: auto;
+            &::-webkit-scrollbar{
+                display: none;
+            }
+            .item{
+                @include item;
+                border-bottom: 4px solid $skyBlue;
+                z-index: 11;
+                @include lg{
+                    font-size: 11px;
+                }
+            }
+        }
+
+        .dropdown{
+            @include container;
+            height: fit-content;
+            max-height: calc(100vh - 70px);
+            overflow: auto;
+            padding-bottom: 10px;
+            background: $white;
+            box-shadow: 0 5px 5px rgba(0,0,0,.05);
+            position: absolute;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+
+            > a{
+                padding: 10px;
+                    min-width: fit-content;
+                    width: 25%;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    color: $gray;
+                    font-weight: 400;
+                    word-wrap: break-word;
+                &::before{
+                    content: '►';
+                    color: $skyBlue;
+                    font-size: 10px;
+                }
+            }
+
+            @include lg{
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            @include md{
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @include xs{
+                grid-template-columns: 1fr;
+            }
+        }
+
+    }
+}

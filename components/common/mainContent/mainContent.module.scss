@@ -1,0 +1,35 @@
+@import '/styles/variables.scss';
+@import '/styles/mixin.scss';
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 334px;
+    gap: 15px;
+    overflow: hidden;
+    > div{
+        padding-left: 15px;
+    }
+
+    .right{
+        border-left: 1px solid $lightGray;
+    }
+
+    @include xl{
+        grid-auto-columns: 1fr 339px;
+    }
+
+    @include md{
+            display: flex;
+            flex-direction: column;
+            padding: 0 15px;
+            > div{
+                padding-left: 0;
+                &:last-child{
+                    border-left: none;
+                }
+                .formContainer{
+                    width: 100%;
+                }
+            }
+    }
+}
